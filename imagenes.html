@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conversor de imágenes - UtiliWeb</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            max-width: 1000px;
+            margin: auto;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 15px 0;
+            margin-top: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #mensaje {
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">UtiliWeb</div>
+</header>
+
+<div class="container">
+
+    <h1>Conversor de imágenes</h1>
+
+    <div class="box">
+
+        <p>
+            Convierte tus imágenes a diferentes formatos.
+        </p>
+
+        <input
+            type="file"
+            id="imagen"
+            accept="image/*"
+        >
+
+        <select id="formato">
+            <option value="image/png">PNG</option>
+            <option value="image/jpeg">JPG</option>
+            <option value="image/webp">WebP</option>
+        </select>
+
+        <button id="convertir">
+            Convertir imagen
+        </button>
+
+        <div id="mensaje"></div>
+
+    </div>
+
+    <a href="index.html" class="back">
+        ← Volver a UtiliWeb
+    </a>
+
+</div>
+
+<script>
+
+    const imagen = document.getElementById("imagen");
+    const formato = document.getElementById("formato");
+    const convertir = document.getElementById("convertir");
+    const mensaje = document.getElementById("mensaje");
+
+    convertir.addEventListener("click", function() {
+
+        const archivo = imagen.files[0];
+
+        if (!archivo) {
+            mensaje.textContent = "Selecciona una imagen primero.";
+            return;
+        }
+
+        const lector = new FileReader();
+
+        lector.onload = function(evento) {
+
+            const img = new Image();
+
+            img.onload = function() {
+
+                const canvas = document.createElement("canvas");
+
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                const contexto = canvas.getContext("2d");
+
+                contexto.drawImage(img, 0, 0);
+
+                canvas.toBlob(function(blob) {
+
+                    const enlace = document.createElement("a");
+
+                    enlace.href = URL.createObjectURL(blob);
+
+                    let extension = "png";
+
+                    if (formato.value === "image/jpeg") {
+                        extension = "jpg";
+                    }
+
+                    if (formato.value === "image/webp") {
+                        extension = "webp";
+                    }
+
+                    enlace.download = "imagen-convertida." + extension;
+
+                    enlace.click();
+
+                    URL.revokeObjectURL(enlace.href);
+
+                    mensaje.textContent = "¡Imagen convertida correctamente!";
+
+                }, formato.value);
+
+            };
+
+            img.src = evento.target.result;
+
+        };
+
+        lector.readAsDataURL(archivo);
+
+    });
+
+</script>
+
+</body>
+</html>

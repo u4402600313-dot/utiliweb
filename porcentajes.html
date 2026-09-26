@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de porcentajes - UtiliWeb</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            max-width: 1000px;
+            margin: auto;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            margin-top: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f5f7fb;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">UtiliWeb</div>
+</header>
+
+<div class="container">
+
+    <h1>Calculadora de porcentajes</h1>
+
+    <div class="box">
+
+        <h2>¿Cuánto es un porcentaje de una cantidad?</h2>
+
+        <label for="cantidad1">Cantidad</label>
+
+        <input
+            type="number"
+            id="cantidad1"
+            placeholder="Ejemplo: 200"
+        >
+
+        <label for="porcentaje1">Porcentaje</label>
+
+        <input
+            type="number"
+            id="porcentaje1"
+            placeholder="Ejemplo: 15"
+        >
+
+        <button id="calcular1">
+            Calcular
+        </button>
+
+        <div class="result">
+            <div class="number" id="resultado1">0</div>
+            <div>Resultado</div>
+        </div>
+
+    </div>
+<div class="box">
+
+    <h2>Aumentar o disminuir una cantidad</h2>
+
+    <label for="cantidad3">Cantidad</label>
+
+    <input
+        type="number"
+        id="cantidad3"
+        placeholder="Ejemplo: 200"
+    >
+
+    <label for="porcentaje3">Porcentaje</label>
+
+    <input
+        type="number"
+        id="porcentaje3"
+        placeholder="Ejemplo: 15"
+    >
+
+    <label for="tipo3">Operación</label>
+
+    <select id="tipo3">
+        <option value="aumentar">Aumentar</option>
+        <option value="disminuir">Disminuir</option>
+    </select>
+
+    <button id="calcular3">
+        Calcular
+    </button>
+
+    <div class="result">
+        <div class="number" id="resultado3">0</div>
+        <div>Resultado</div>
+    </div>
+
+</div>
+<div class="box">
+
+    <h2>¿Qué porcentaje representa una cantidad?</h2>
+
+    <label for="cantidad2">Cantidad</label>
+
+    <input
+        type="number"
+        id="cantidad2"
+        placeholder="Ejemplo: 30"
+    >
+
+    <label for="total2">Cantidad total</label>
+
+    <input
+        type="number"
+        id="total2"
+        placeholder="Ejemplo: 200"
+    >
+
+    <button id="calcular2">
+        Calcular porcentaje
+    </button>
+
+    <div class="result">
+        <div class="number" id="resultado2">0 %</div>
+        <div>Porcentaje</div>
+    </div>
+
+</div>
+    </a>
+
+</div>
+
+<script>
+
+    const cantidad1 = document.getElementById("cantidad1");
+    const porcentaje1 = document.getElementById("porcentaje1");
+    const calcular1 = document.getElementById("calcular1");
+    const resultado1 = document.getElementById("resultado1");
+
+    calcular1.addEventListener("click", function() {
+
+        const cantidad = Number(cantidad1.value);
+        const porcentaje = Number(porcentaje1.value);
+
+        if (cantidad1.value === "" || porcentaje1.value === "") {
+            resultado1.textContent = "Escribe los datos";
+            return;
+        }
+
+        const resultado = cantidad * porcentaje / 100;
+
+        resultado1.textContent = resultado;
+    });
+const cantidad2 = document.getElementById("cantidad2");
+const total2 = document.getElementById("total2");
+const calcular2 = document.getElementById("calcular2");
+const resultado2 = document.getElementById("resultado2");
+
+calcular2.addEventListener("click", function() {
+
+    const cantidad = Number(cantidad2.value);
+    const total = Number(total2.value);
+
+    if (cantidad2.value === "" || total2.value === "") {
+        resultado2.textContent = "Escribe los datos";
+        return;
+    }
+
+    if (total === 0) {
+        resultado2.textContent = "No se puede dividir entre 0";
+        return;
+    }
+
+    const resultado = (cantidad / total) * 100;
+
+    resultado2.textContent = resultado + " %";
+});const cantidad3 = document.getElementById("cantidad3");
+const porcentaje3 = document.getElementById("porcentaje3");
+const tipo3 = document.getElementById("tipo3");
+const calcular3 = document.getElementById("calcular3");
+const resultado3 = document.getElementById("resultado3");
+
+calcular3.addEventListener("click", function() {
+
+    const cantidad = Number(cantidad3.value);
+    const porcentaje = Number(porcentaje3.value);
+
+    if (cantidad3.value === "" || porcentaje3.value === "") {
+        resultado3.textContent = "Escribe los datos";
+        return;
+    }
+
+    const cambio = cantidad * porcentaje / 100;
+
+    if (tipo3.value === "aumentar") {
+        resultado3.textContent = cantidad + cambio;
+    } else {
+        resultado3.textContent = cantidad - cambio;
+    }
+});
+</script>
+
+</body>
+</html>

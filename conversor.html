@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de unidades - UtiliWeb</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            max-width: 1000px;
+            margin: auto;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f5f7fb;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">UtiliWeb</div>
+</header>
+
+<div class="container">
+
+    <h1>Conversor de unidades</h1>
+
+    <div class="box">
+
+        <label for="cantidad">Cantidad</label>
+
+        <input
+            type="number"
+            id="cantidad"
+            placeholder="Escribe una cantidad"
+        >
+
+        <label for="conversion">Conversión</label>
+
+        <select id="conversion">
+    <option value="km-m">Kilómetros → Metros</option>
+    <option value="m-km">Metros → Kilómetros</option>
+    <option value="m-cm">Metros → Centímetros</option>
+    <option value="cm-m">Centímetros → Metros</option>
+    <option value="cm-mm">Centímetros → Milímetros</option>
+    <option value="mm-cm">Milímetros → Centímetros</option>
+    <option value="kg-g">Kilogramos → Gramos</option>
+    <option value="g-kg">Gramos → Kilogramos</option>
+    <option value="c-f">Celsius → Fahrenheit</option>
+    <option value="f-c">Fahrenheit → Celsius</option>
+</select>
+
+        <div class="result">
+            <div class="number" id="resultado">0</div>
+            <div>Resultado</div>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back">← Volver a UtiliWeb</a>
+
+</div>
+
+<script>
+
+    const cantidad = document.getElementById("cantidad");
+    const conversion = document.getElementById("conversion");
+    const resultado = document.getElementById("resultado");
+
+    function convertir() {
+
+        const valor = Number(cantidad.value);
+
+        if (cantidad.value === "") {
+            resultado.textContent = "0";
+            return;
+        }
+
+        if (conversion.value === "km-m") {
+            resultado.textContent = valor * 1000;
+        }
+
+        if (conversion.value === "m-km") {
+            resultado.textContent = valor / 1000;
+        }
+if (conversion.value === "m-cm") {
+    resultado.textContent = valor * 100;
+}
+
+if (conversion.value === "cm-m") {
+    resultado.textContent = valor / 100;
+}
+
+if (conversion.value === "cm-mm") {
+    resultado.textContent = valor * 10;
+}
+
+if (conversion.value === "mm-cm") {
+    resultado.textContent = valor / 10;
+}
+
+if (conversion.value === "kg-g") {
+    resultado.textContent = valor * 1000;
+}
+
+if (conversion.value === "g-kg") {
+    resultado.textContent = valor / 1000;
+}
+
+if (conversion.value === "c-f") {
+    resultado.textContent = (valor * 9 / 5) + 32;
+}
+
+if (conversion.value === "f-c") {
+    resultado.textContent = (valor - 32) * 5 / 9;
+}
+    }
+
+    cantidad.addEventListener("input", convertir);
+    conversion.addEventListener("change", convertir);
+
+</script>
+
+</body>
+</html>

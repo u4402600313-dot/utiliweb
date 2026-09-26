@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador QR - UtiliWeb</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            max-width: 1000px;
+            margin: auto;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #qr {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            min-height: 50px;
+        }
+
+        .back {
+            display: block;
+            margin-top: 30px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">UtiliWeb</div>
+</header>
+
+<div class="container">
+
+    <h1>Generador de códigos QR</h1>
+
+    <p>Escribe un enlace o texto para crear tu código QR.</p>
+
+    <input
+        type="text"
+        id="textoQR"
+        placeholder="https://ejemplo.com"
+    >
+
+    <br>
+
+    <button id="generar">Generar código QR</button>
+
+    <div id="qr"></div>
+<button id="descargar" style="display: none;">Descargar QR</button>
+
+    <a href="index.html" class="back">← Volver a UtiliWeb</a>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+    const textoQR = document.getElementById("textoQR");
+    const generar = document.getElementById("generar");
+    const qr = document.getElementById("qr");
+const descargar = document.getElementById("descargar");
+
+    generar.addEventListener("click", function() {
+
+        const texto = textoQR.value.trim();
+
+        if (texto === "") {
+            alert("Escribe un texto o enlace primero.");
+            return;
+        }
+
+        qr.innerHTML = "";
+
+        new QRCode(qr, {
+            text: texto,
+            width: 200,
+            height: 200
+        });
+descargar.style.display = "inline-block";
+descargar.addEventListener("click", function() {
+    const imagen = qr.querySelector("img");
+
+    if (imagen) {
+        const enlace = document.createElement("a");
+        enlace.href = imagen.src;
+        enlace.download = "codigo-qr.png";
+        enlace.click();
+    }
+});
+    });
+</script>
+</body>
+</html>

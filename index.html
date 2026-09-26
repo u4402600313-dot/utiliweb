@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UtiliWeb - Herramientas online gratis</title>
+<meta name="description" content="UtiliWeb ofrece herramientas online gratuitas como contador de palabras, generador QR, conversor de unidades, calculadora de porcentajes y conversor de imágenes.">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            max-width: 1000px;
+            margin: auto;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .hero span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .tools {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .tools h2 {
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+        .icon {
+            font-size: 40px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+       .button {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+        .soon {
+            color: #777;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            background: #111827;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        UtiliWeb
+    </div>
+</header>
+
+<section class="hero">
+
+    <h1>
+        Herramientas <span>útiles</span> y gratis
+    </h1>
+
+    <p>
+       UtiliWeb reúne herramientas online sencillas, rápidas y gratuitas para ayudarte en tus tareas diarias.
+    </p>
+
+</section>
+
+<section class="tools">
+
+    <h2>Nuestras herramientas</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">🔢</div>
+            <h3>Contador de palabras</h3>
+            <p>
+                Cuenta palabras y caracteres de cualquier texto.
+            </p>
+            <a href="contador.html" class="button">
+    Usar herramienta
+</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">▣</div>
+            <h3>Generador QR</h3>
+            <p>
+                Convierte un enlace o texto en un código QR.
+            </p>
+            <a href="qr.html" class="button">
+    Usar herramienta
+</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">📏</div>
+            <h3>Conversor de unidades</h3>
+            <p>
+                Convierte kilómetros, metros y otras unidades.
+            </p>
+           <a href="conversor.html" class="button">
+    Usar herramienta
+</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">%</div>
+            <h3>Calculadora de porcentajes</h3>
+            <p>
+                Calcula descuentos y porcentajes fácilmente.
+            </p>
+            <a href="porcentajes.html" class="button">
+    Usar herramienta
+</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">🖼️</div>
+            <h3>Conversor de imágenes</h3>
+            <p>
+                Convierte imágenes entre diferentes formatos.
+            </p>
+            <a href="imagenes.html" class="button">
+    Usar herramienta
+</a>
+        </div>
+
+    </div>
+
+</section>
+
+<footer><section style="max-width: 1000px; margin: 50px auto; padding: 20px;">
+    <h2 style="text-align: center;">Herramientas online gratuitas</h2>
+
+    <p style="color: #666; line-height: 1.7;">
+        UtiliWeb ofrece herramientas online gratuitas para realizar tareas
+        de forma rápida y sencilla. Puedes contar palabras, crear códigos QR,
+        convertir unidades, calcular porcentajes y convertir imágenes entre
+        diferentes formatos.
+    </p>
+
+    <p style="color: #666; line-height: 1.7;">
+        Todas las herramientas están pensadas para ser fáciles de usar y
+        funcionar directamente desde tu navegador.
+    </p>
+<footer>
+    <strong>UtiliWeb</strong>
+    <p>Herramientas online gratuitas.</p>
+
+    <p>
+        <a href="privacidad.html" style="color: white;">
+            Política de privacidad
+        </a>
+    </p>
+<p>
+    <a href="aviso-legal.html" style="color: white;">
+        Aviso legal
+    </a>
+</p>
+    <p>© 2026 UtiliWeb</p>
+</footer>
+</body>
+</html>
